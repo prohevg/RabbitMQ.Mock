@@ -1,0 +1,9 @@
+﻿{
+  //some comment
+  "When": {
+    "Regex": "\\w*\"name\": \"mock\"\\w*"
+  },
+  "Than": {
+    "File": "Response.json"
+  }
+}

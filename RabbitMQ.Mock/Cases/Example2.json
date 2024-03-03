@@ -1,0 +1,10 @@
+﻿{
+  //some comment
+  "When": {
+    "Regex": "\\w*\"name\": \"mock2\"\\w*"
+  },
+  "Than": {
+    "Delay": "00:00:20",
+    "File": "Response2.json"
+  }
+}
