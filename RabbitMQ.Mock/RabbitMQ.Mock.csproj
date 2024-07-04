@@ -19,6 +19,12 @@
     <None Update="Cases\Example2.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Cases\PORTALCL-2442.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Responses\PORTALCL-2442.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Responses\Response1.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

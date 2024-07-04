@@ -1,12 +1,12 @@
-﻿//using AMQP_0_9_1.Transport;
+﻿using AMQP_0_9_1.Transport;
 using AMQP_0_9_1.Transport.Domain;
 using AMQP_0_9_1.Transport.Host;
 
 var address = new Address("amqp://localhost:5673");
 
 // uncomment the following to write frame traces
-//AmqpTrace.TraceLevel = AmqpTraceLevel.Frame;
-//AmqpTrace.TraceListener = (l, f, a) => Console.WriteLine(DateTime.Now.ToString("[hh:mm:ss.fff]") + " " + string.Format(f, a));
+AmqpTrace.TraceLevel = AmqpTraceLevel.Frame;
+AmqpTrace.TraceListener = (l, f, a) => Console.WriteLine(DateTime.Now.ToString("[hh:mm:ss.fff]") + " " + string.Format(f, a));
 
 var host = new ContainerHost(address, cfg => cfg.UseMassTransit = true);
 await host.OpenAsync();

@@ -36,7 +36,14 @@ namespace AMQP_0_9_1.Transport.Domain
 
             if (consumer != null)
             {
-                _consumers.Remove(consumer);
+                try
+                {
+                    _consumers.Remove(consumer);
+                }
+                catch (System.Exception ex)
+                {
+                    AmqpTrace.WriteLine(AmqpTraceLevel.Error, ex.Message);
+                }
             }
         }
 

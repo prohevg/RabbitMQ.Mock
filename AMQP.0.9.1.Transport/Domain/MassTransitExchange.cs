@@ -116,8 +116,16 @@ namespace AMQP_0_9_1.Transport.Domain
             var offset = 0;
             foreach (var item in content)
             {
-                Array.Copy(item.Payload.Buffer, 0, buffer, offset, item.PayloadLength);
-                offset += item.Payload.Buffer.Length;
+                try
+                {
+                    Array.Copy(item.Payload.Buffer, 0, buffer, offset, item.PayloadLength);
+                    offset += item.Payload.Buffer.Length;
+                }
+                catch (Exception ex)
+                {
+                    AmqpTrace.WriteLine(AmqpTraceLevel.Error, ex.Message);
+                    throw;
+                }
             }
 
             return buffer;
@@ -125,7 +133,7 @@ namespace AMQP_0_9_1.Transport.Domain
 
         private int GetMessageSize(LinkedList<IAmqpFrameContent> content)
         {
-            return content.Sum(x => x.PayloadLength);
+            return content.Sum(x => x.Payload.Length);
         }
 
         #endregion

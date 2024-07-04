@@ -2,6 +2,7 @@
 using AMQP_0_9_1.Domain;
 using AMQP_0_9_1.Extensions;
 using AMQP_0_9_1.Types;
+using System.Collections.Generic;
 using Boolean = AMQP_0_9_1.Types.Boolean;
 
 namespace AMQP_0_9_1.Methods.Incoming

@@ -50,6 +50,8 @@ namespace AMQP_0_9_1.Transport.Factories
 
                 case AmpqCommandId.ExchangeDeclare:
                     return new ExchangeDeclare();
+                case AmpqCommandId.ExchangeBind:
+                    return new ExchangeBind();
 
                 case AmpqCommandId.QueueDeclare:
                     return new QueueDeclare();

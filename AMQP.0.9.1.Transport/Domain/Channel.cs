@@ -5,6 +5,7 @@ using AMQP_0_9_1.Transport.Domain;
 using AMQP_0_9_1.Transport.Factories;
 using AMQP_0_9_1.Transport.Holders;
 using AMQP_0_9_1.Types;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -94,6 +95,12 @@ namespace AMQP_0_9_1.Domain
                 return ValueTask.FromResult(true);
             }
 
+            if (amqpMethod is ExchangeBind exchangeBind)
+            {
+                ExchangeBind(exchangeBind);
+                return ValueTask.FromResult(true);
+            }
+
             if (amqpMethod is QueueDeclare queueDeclare)
             {
                 QueueDeclare(queueDeclare);
@@ -141,6 +148,11 @@ namespace AMQP_0_9_1.Domain
             _exchanges.Add(newExchange.Name, newExchange);
 
             _connection.SendMethod(Id, new ExchangeDeclareOK());
+        }
+
+        private void ExchangeBind(ExchangeBind exchangeBind)
+        {
+            _connection.SendMethod(Id, new ExchangeBindOK());
         }
 
         private void QueueDeclare(QueueDeclare queueDeclare)
